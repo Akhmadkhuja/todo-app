@@ -1,0 +1,22 @@
+extends layout.pug 
+
+block First page 
+    if error 
+        p Fill the input 
+
+    if success 
+        p Nice job 
+        
+    form(action='/add' method='POST')
+        input(type="text" placeholder='My description' name='TODO')
+        button.btn Add 
+
+    div .todos 
+        if todos.length 
+            each todo in todos
+            p.todo #{ todo.description }
+            p.todo Some staff to be done...
+            p.todo Some staff to be done..2
+            p.todo Some staff to be done..3
+        else 
+            p.todo No todo available 

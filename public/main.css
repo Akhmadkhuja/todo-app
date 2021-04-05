@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.logo {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    justify-self: space-between;
+}
+
+.input {
+    display: inline-block;
+    padding: 10px;
+    font-size: 1.5rem; 
+    width: 80%;
+    border: 1px green;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.5rem; 
+    width: 20%;
+    border: none;
+    background: yellow;
+    color: black;
+}
+
+.todos {
+    margin-top: 25px;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+.todo {
+    padding: 10px;
+    font-size: 1.5rem;
+    border-bottom: tomato;
+}
+
+.todo:hover {
+    background: grey;
+}
