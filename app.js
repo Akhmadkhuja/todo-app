@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 const fs = require('fs')
-const PORT = 8000
+const PORT = 5000
 
 app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
@@ -26,20 +26,14 @@ app.post('/add' , (req, res) => {
     if (formData.todo.trim() == '') {
 
         fs.readFile('./data/todos.json', (er, data) => {
-            if (err) throw err
             const todos = JSON.parse(data)
 
             res.render('home', {error: true, todos: todos })
         })
-        fs.readFile('./data/todos.json', (er, data) => {
-                    if (err) throw err
-                    const todos = JSON.parse(data)
-
-                    res.render('home', {success: true, todos: todos })
-                })
     } else {
         fs.readFile('./data/todos.json', (err, data) => {
             if (err) throw err
+            const todos = JSON.parse(data)
 
             const todo = {
                 id: id(),
@@ -71,5 +65,5 @@ app.listen(PORT, (err) => {
 
 
 function id() {
-    return '_' + Math.random().toString(36).substr(2, 9);
+    return '_' + Math.random().toString(20).substr(2, 10);
 };
