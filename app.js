@@ -1,10 +1,8 @@
-
-
 const express = require('express')
 const app = express()
 
 const fs = require('fs')
-const PORT = 5000
+const PORT = process.env.PORT || 2000
 
 app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
@@ -25,7 +23,7 @@ app.post('/add' , (req, res) => {
 
     if (formData.todo.trim() == '') {
 
-        fs.readFile('./data/todos.json', (er, data) => {
+        fs.readFile('./data/todos.json', (err, data) => {
             const todos = JSON.parse(data)
 
             res.render('home', {error: true, todos: todos })
@@ -46,7 +44,7 @@ app.post('/add' , (req, res) => {
             fs.writeFile('./data/todos.json', JSON.stringify(todos), (err) => {
                 if (err) throw err
 
-                fs.readFile('./data/todos.json', (er, data) => {
+                fs.readFile('./data/todos.json', (err, data) => {
                     if (err) throw err
                     const todos = JSON.parse(data)
 
@@ -55,6 +53,47 @@ app.post('/add' , (req, res) => {
             })
         })
     }
+})
+
+app.get('/:id/delete', (req,res) => {
+    const id = req.params.id
+
+    fs.readFile('./data/todos.json', (err, data) => {
+        if (err) throw err
+
+        const todos = JSON.parse(data)
+
+        const filteredTodos = todos.filter(todo => todo.id != id)
+
+        fs.writeFile('./data/todos.json', JSON.stringify(filteredTodos), (err) => {
+            if (err) throw err
+
+            res.redirect('/')
+        })
+    })
+})
+
+app.get('/:id/update', (req,res) => {
+    const id = req.params.id
+
+    fs.readFile('./data/todos.json', (err, data) => {
+        if (err) throw err
+        const todos = JSON.parse(data)
+        const todo = todos.filter(todo => todo.id == id)[0]
+
+        const todoIdx = todos.indexOf(todo)
+        const splicedTodo = todos.splice(todoIdx, 1)[0]
+
+        splicedTodo.done = true
+
+        todos.push(splicedTodo)
+
+        fs.writeFile('./data/todos.json', JSON.stringify(todos), (err) => {
+            if (err) throw err
+            
+            res.render('home', {todos: todos})
+        })
+    })   
 })
 
 app.listen(PORT, (err) => {

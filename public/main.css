@@ -50,6 +50,9 @@
 }
 
 .todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
     font-size: 1.5rem;
     border-bottom: tomato;
@@ -81,4 +84,22 @@
 .success {
     color: slateblue;
     border-color: slateblue;
+}
+
+.delete {
+    text-decoration: none;
+    font-size: 10px;
+    padding: 10px 20px;
+    background: rgba(255, 0, 0, 0.712);
+    color: #fff;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.done, .undone {
+    text-decoration: none;
+    color: springgreen;
+}
+
+.done {
+    text-decoration: line-through;
 }

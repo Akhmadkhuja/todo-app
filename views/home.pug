@@ -7,6 +7,9 @@ block First page
     if success 
         p.success Nice job 
 
+    if deleted
+        p.success deleted 
+
     form.form(action='/add' method='POST')
         input.input(type="text" placeholder='My description' name='todo')
         button.btn Add 
@@ -14,7 +17,11 @@ block First page
     div.todos 
             if todos.length 
                 each todo in todos
-                    p.todo #{ todo.description }
-
+                    p.todo 
+                        if todo.done
+                            a.done(href=`/${todo.id}/update`) #{ todo.description }
+                        else
+                            a.undone(href=`/${todo.id}/update`) #{ todo.description }
+                        a.delete(href=`/${todo.id}/delete`) Delete
             else 
                 p.todo No todo available 
