@@ -6,7 +6,7 @@ App allows users to track the to dos.
 1.Download the source code
 
 ```bash
-git clone [url to the github repo]
+git clone https://github.com/Akhmadkhuja/todo-app.git
 ```
 or just download the .zip file
 
@@ -25,4 +25,4 @@ node app
 - pug
 
 #### Link to the Github
-[url to the github repo]
+https://github.com/Akhmadkhuja/todo-app.git
