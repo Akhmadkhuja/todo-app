@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: #020631;
+}
+
 .container {
     max-width: 800px;
     margin: 50px auto;
@@ -16,6 +20,8 @@
 .logo {
     text-align: center;
     font-size: 4rem;
+    color: white;
+    margin-bottom: 30px;
 }
 
 .form {
@@ -39,13 +45,13 @@
     font-size: 1.5rem; 
     width: 20%;
     border: none;
-    background: yellow;
-    color: black;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .todos {
     margin-top: 25px;
-    border: 1px solid #eee;
+    border: 1px solid white;
     padding: 10px;
 }
 
@@ -55,51 +61,62 @@
     align-items: center;
     padding: 10px;
     font-size: 1.5rem;
-    border-bottom: tomato;
+    color: white;
 }
 
 .todo:last-child {
     border-bottom: none;
 }
 
-.todo:hover {
-    background: grey;
+p.todo:hover {
+    background-color: black;
 }
 
 
 .error, .success {
     text-align: center;
     font-size: 1.4rem;
-    border: 1px solid forestgreen;
+    border: 1px solid indigo;
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
 
 .error {
-    color: hotpink;
-    border-color: indigo;
+    color: rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
 }
 
 .success {
-    color: slateblue;
-    border-color: slateblue;
+    color: rgb(44, 170, 19);
+    border-color: rgb(44, 170, 19);
 }
 
 .delete {
     text-decoration: none;
     font-size: 10px;
     padding: 10px 20px;
-    background: rgba(255, 0, 0, 0.712);
-    color: #fff;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.delete img{
+    width: 30px;
+    height:30px;
 }
 
 .done, .undone {
     text-decoration: none;
-    color: springgreen;
+    letter-spacing: 2px;
+    color: white;
+    transition: .3s ease;
 }
+.done, .undone :hover{
+    color: black;
+    background-color: white;
+    width: 100%;
+}
+
 
 .done {
     text-decoration: line-through;
 }
+

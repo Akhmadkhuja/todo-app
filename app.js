@@ -2,10 +2,10 @@ const express = require('express')
 const app = express()
 
 const fs = require('fs')
-const PORT = process.env.PORT || 2000
+const PORT = process.env.PORT || 4000
 
 app.set('view engine', 'pug')
-app.use('/static', express.static('public'))
+app.use('/static', express.static('public/styles'))
 app.use(express.urlencoded({extended: false }))
 
 app.get('/', (req, res) => {
@@ -94,6 +94,16 @@ app.get('/:id/update', (req,res) => {
             res.render('home', {todos: todos})
         })
     })   
+})
+
+app.get('/api/v1/todos', (req, res) => {
+    fs.readFile('./data/todos.json', (err, data) => {
+        if (err) throw err 
+        
+        const todos = JSON.parse(data)
+
+        res.json(todos)
+    })
 })
 
 app.listen(PORT, (err) => {

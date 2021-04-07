@@ -13,7 +13,6 @@ block First page
     form.form(action='/add' method='POST')
         input.input(type="text" placeholder='My description' name='todo')
         button.btn Add 
-
     div.todos 
             if todos.length 
                 each todo in todos
@@ -22,6 +21,8 @@ block First page
                             a.done(href=`/${todo.id}/update`) #{ todo.description }
                         else
                             a.undone(href=`/${todo.id}/update`) #{ todo.description }
-                        a.delete(href=`/${todo.id}/delete`) Delete
+                        a.delete(href=`/${todo.id}/delete`)
+                            img(src='https://thumbs.dreamstime.com/b/trash-bin-garbage-icon-flat-style-bucket-vector-illust-illustration-isolated-background-basket-business-concept-130598967.jpg' alt='delete')
             else 
-                p.todo No todo available 
+                p.todo No todo available
+
