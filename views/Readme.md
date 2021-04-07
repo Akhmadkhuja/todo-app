@@ -26,3 +26,6 @@ node app
 
 #### Link to the Github
 https://github.com/Akhmadkhuja/todo-app.git
+
+#### Glitch link to application
+https://to-doo.glitch.me/

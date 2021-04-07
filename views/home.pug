@@ -2,16 +2,16 @@ extends layout.pug
 
 block First page 
     if error 
-        p.error Fill the input 
+        p.error Please , fill the line 
 
     if success 
-        p.success Nice job 
+        p.success Nice , saved 
 
     if deleted
         p.success deleted 
 
     form.form(action='/add' method='POST')
-        input.input(type="text" placeholder='My description' name='todo')
+        input.input(type="text" placeholder='Write here...' name='todo')
         button.btn Add 
     div.todos 
             if todos.length 
@@ -24,5 +24,5 @@ block First page
                         a.delete(href=`/${todo.id}/delete`)
                             img(src='https://thumbs.dreamstime.com/b/trash-bin-garbage-icon-flat-style-bucket-vector-illust-illustration-isolated-background-basket-business-concept-130598967.jpg' alt='delete')
             else 
-                p.todo No todo available
+                p.todo NO TO DO available
 
